@@ -1,60 +1,39 @@
-/*
-- Variáveis
-- Operadores
-- Laços de repetição
-- Estruturas de decisões
-- Funções
-
-## Objetivo:
-
-Crie uma função que recebe como parâmetro a quantidade de vitórias e derrotas de um jogador,
-depois disso retorne o resultado para uma variável, o saldo de Rankeadas deve ser feito através do calculo (vitórias - derrotas)
-
-Se vitórias for menor do que 10 = Ferro
-Se vitórias for entre 11 e 20 = Bronze
-Se vitórias for entre 21 e 50 = Prata
-Se vitórias for entre 51 e 80 = Ouro
-Se vitórias for entre 81 e 90 = Diamante
-Se vitórias for entre 91 e 100= Lendário
-Se vitórias for maior ou igual a 101 = Imortal
-
-## Saída
-
-Ao final deve se exibir uma mensagem:
-"O Herói tem de saldo de **{saldoVitorias}** está no nível de **{nivel}**"
- */
-
-function quantidadeVitoria(saldoVitorias, saldoDeDerrotas) {
-    let saldo = saldoVitorias - saldoDeDerrotas
-    let nivel
-    if (saldo <= 10) {
-        nivel = "Ferro"
-    }
-    else if (saldo >= 11 && saldo <= 20){
-        nivel = "Bronze"
+class Heroi {
+    constructor(nome, idade, tipo) {
+        this.nome = nome;
+        this.idade = idade;
+        this.tipo = tipo;
     }
 
-    else if (saldo >= 21 && saldo <= 50){
-        nivel = "Prata"
-    }
+    atacar() {
+        let ataque;
+        
+        switch(this.tipo) {
+            case 'mago':
+                ataque = 'usou magia';
+                break;
+            case 'guerreiro':
+                ataque = 'usou espada';
+                break;
+            case 'monge':
+                ataque = 'usou artes marciais';
+                break;
+            case 'ninja':
+                ataque = 'usou shuriken';
+                break;
+            default:
+                ataque = 'usou um ataque desconhecido';
+        }
 
-    else if (saldo >= 51 && saldo <= 80){
-        nivel = "ouro"
+        console.log(`o ${this.tipo} atacou usando ${ataque}`);
     }
-    
-    else if (saldo >= 81 && saldo <= 90){
-        nivel = "diamante"
-    }
-    
-    else if (saldo >= 91 && saldo <= 100){
-        nivel = "lendario"
-    }
-
-    else if (saldo >= 101){
-        nivel = "imortal"
-    }
-
-    return(`O heroi tem a quantidade de vitorias de ${saldo} e tá no nivel ${nivel}`)
 }
 
-console.log(quantidadeVitoria(800,200))
+const heroi1 = new Heroi('Gandalf', 2000, 'mago');
+heroi1.atacar(); 
+const heroi2 = new Heroi('Aragorn', 35, 'guerreiro');
+heroi2.atacar(); 
+const heroi3 = new Heroi('Bruce Lee', 32, 'monge');
+heroi3.atacar(); 
+const heroi4 = new Heroi('Hanzo', 28, 'ninja');
+heroi4.atacar(); 
